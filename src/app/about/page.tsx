@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { BrandStory } from "@/components/sections/BrandStory";
 
+import { siteConfig } from "@/data/siteData";
+
 export const metadata: Metadata = {
-    title: "About Us | Tattvam Agri Export — Gujarat's Agri Heritage",
-    description:
-        "Tattvam Agri Export is rooted in Visnagar, Mahesana, near Unjha — Asia's spice hub. Learn about our heritage, values, and commitment to quality agricultural exports.",
+    title: `About Us | ${siteConfig.brandName}`,
+    description: siteConfig.description,
 };
 
 export default function AboutPage() {

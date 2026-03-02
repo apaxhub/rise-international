@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import { siteConfig } from "@/data/siteData";
 
 const navLinks = [
     { name: "Products", href: "/products" },
@@ -36,10 +37,10 @@ export function Navbar() {
                 {/* Minimal Logo */}
                 <Link href="/" className="flex flex-col leading-tight group">
                     <span className="text-lg font-bold tracking-tight text-fg">
-                        Tattvam.
+                        {siteConfig.brandName.split(" ")[0]}.
                     </span>
                     <span className="text-[10px] uppercase tracking-widest text-muted group-hover:text-fg transition-colors">
-                        Agri Export
+                        {siteConfig.brandName.split(" ").slice(1).join(" ")}
                     </span>
                 </Link>
 

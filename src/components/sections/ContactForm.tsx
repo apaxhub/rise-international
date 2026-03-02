@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { siteConfig } from "@/data/siteData";
+import { siteConfig, products } from "@/data/siteData";
 
 export function ContactForm() {
     return (
@@ -15,7 +15,7 @@ export function ContactForm() {
                         <div>
                             <p className="text-xs font-bold tracking-widest text-primary uppercase mb-3">Get In Touch</p>
                             <h2 className="text-3xl md:text-4xl font-bold text-fg mb-4 leading-tight">
-                                Partner with Tattvam
+                                Partner with {siteConfig.brandName}
                             </h2>
                             <p className="text-muted leading-relaxed">
                                 Looking for a reliable spice exporter? Reach out for bulk pricing, product specs, private label options, or documentation support.
@@ -88,13 +88,10 @@ export function ContactForm() {
                                 <label htmlFor="product" className="block text-sm font-medium text-fg mb-1.5">Product of Interest</label>
                                 <select id="product" className="w-full bg-surface border border-border rounded-xl px-4 py-3 text-fg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
                                     <option value="">Select a category...</option>
-                                    <option>Whole Spices (Cumin, Ajwain, Coriander, etc.)</option>
-                                    <option>Blended Spices & Powders</option>
-                                    <option>Dehydrated Products</option>
-                                    <option>Oil Seeds (Sesame, Peanuts, etc.)</option>
-                                    <option>Millets & Cereals</option>
-                                    <option>Peanut Butter & Specialties</option>
-                                    <option>Multiple Categories</option>
+                                    {products.map(p => (
+                                        <option key={p.slug} value={p.name}>{p.name}</option>
+                                    ))}
+                                    <option value="multiple">Multiple Categories</option>
                                 </select>
                             </div>
 

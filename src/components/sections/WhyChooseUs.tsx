@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShieldCheck, Leaf, Globe2, Activity } from "lucide-react";
+import { siteConfig } from "@/data/siteData";
 
 const features = [
     {
@@ -50,7 +51,7 @@ export function WhyChooseUs() {
 
             <div className="container mx-auto px-4 md:px-8 max-w-6xl relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <p className="text-[11px] font-bold tracking-widest text-primary uppercase mb-4">The Tattvam Standard</p>
+                    <p className="text-[11px] font-bold tracking-widest text-primary uppercase mb-4">The {siteConfig.brandName} Standard</p>
                     <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-fg mb-6 tracking-tight leading-[1.1]">
                         We Don't Just Export.<br />
                         <span className="text-muted font-medium italic">We Engineer Quality.</span>

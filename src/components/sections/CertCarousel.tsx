@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { certifications } from "@/data/siteData";
+import { siteConfig, certifications } from "@/data/siteData";
 
 export function CertCarousel() {
     return (
@@ -33,7 +33,7 @@ export function CertCarousel() {
                         </h2>
 
                         <p className="text-surface/70 text-lg leading-relaxed mb-10 font-light pr-0 lg:pr-10">
-                            Customs rejection is the silent killer of agricultural trade margins. We eliminate that risk entirely at the source. Every single container leaving Tattvam holds unassailable accreditation.
+                            Customs rejection is the silent killer of agricultural trade margins. We eliminate that risk entirely at the source. Every single container leaving {siteConfig.brandName} holds unassailable accreditation.
                         </p>
 
                         <div className="flex gap-8 border-l-2 border-primary-light/40 pl-6">

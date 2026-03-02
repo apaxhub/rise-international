@@ -2,25 +2,7 @@
 
 import { motion } from "framer-motion";
 import { exportMarkets } from "@/data/siteData";
-import Image from "next/image";
-
-// Tweak label offsets based on map density to prevent overlapping
-function getLabelOffset(marketName: string) {
-    switch (marketName) {
-        case "USA": return "-translate-x-full -translate-y-full -ml-2 -mt-2";
-        case "Canada": return "-translate-x-1/2 -translate-y-full -mt-2";
-        case "UK": return "-translate-x-1/2 -translate-y-full -mt-2";
-        case "UAE": return "translate-x-3 -translate-y-full -mt-1";
-        case "Oman": return "translate-x-3 translate-y-2";
-        case "Qatar": return "-translate-x-full -translate-y-full -mt-1 -ml-2";
-        case "Saudi Arabia": return "-translate-x-full translate-y-3 -ml-2";
-        case "Africa": return "-translate-x-1/2 translate-y-3";
-        case "Bangladesh": return "translate-x-3 -translate-y-4";
-        case "Indonesia": return "translate-x-3 translate-y-2";
-        case "China": return "translate-x-3 -translate-y-4";
-        default: return "-translate-y-full -mt-2";
-    }
-}
+import { Globe } from "@/components/ui/Globe";
 
 export function ExportHighlights() {
     return (
@@ -37,48 +19,35 @@ export function ExportHighlights() {
                     </p>
                 </div>
 
-                {/* Global Map with Meaningful Flow */}
-                <div className="relative w-full aspect-[2/1] md:aspect-[2.2/1] max-w-5xl mx-auto rounded-3xl bg-bg border border-border overflow-hidden shadow-soft flex items-center justify-center p-4">
+                {/* Global Map Content */}
+                <div className="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
 
-                    {/* Base World Map Image - INCREASED OPACITY AND CONTRAST */}
-                    <div className="relative w-full h-full opacity-40 mix-blend-multiply">
-                        {/* We apply a CSS filter to make the SVG map look darker and sharper against the soft bg */}
-                        <Image
-                            src="/assets/world-map.svg"
-                            alt="World Map"
-                            fill
-                            className="object-cover filter contrast-125 saturate-50"
-                        />
+                    {/* Market List */}
+                    <div className="w-full lg:w-1/3 order-2 lg:order-1 flex flex-col gap-4">
+                        <div className="bg-bg border border-border rounded-2xl p-6 shadow-soft h-full flex flex-col justify-center">
+                            <h3 className="text-lg font-bold text-fg mb-5 border-b border-border pb-3">Our Destinations</h3>
+                            <div className="grid grid-cols-2 gap-x-2 gap-y-4">
+                                {exportMarkets.map((market, idx) => (
+                                    <motion.div
+                                        key={market.name}
+                                        initial={{ opacity: 0, x: -10 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
+                                        className="flex items-center gap-2 hover:translate-x-1 transition-transform cursor-default"
+                                    >
+                                        <span className="text-xl drop-shadow-sm">{market.flag}</span>
+                                        <span className="text-sm font-bold text-fg tracking-tight">{market.name}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Destination Pins and Always-Visible Labels with Flags */}
-                    {exportMarkets.map((market, idx) => (
-                        <motion.div
-                            key={market.name}
-                            initial={{ scale: 0, opacity: 0 }}
-                            whileInView={{ scale: 1, opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 + 0.5, type: "spring", stiffness: 200 }}
-                            className="absolute z-20 flex items-center justify-center"
-                            style={{ top: market.top, left: market.left }}
-                        >
-                            {/* Destination core dot */}
-                            <div className="relative flex items-center justify-center w-3 h-3 hover:scale-150 transition-transform duration-300">
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary shadow-sm" />
-                                <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-40 animate-ping" />
-                            </div>
-
-                            {/* Visible text label explicitly positioned with FLAG */}
-                            <div className={`absolute ${getLabelOffset(market.name)} flex items-center gap-1.5 bg-surface/95 backdrop-blur-sm px-2.5 py-1 rounded-md shadow-card border border-border z-30`}>
-                                {/* Fallback to country name if flag isn't typed properly, but we added them to siteData */}
-                                <span className="text-sm leading-none drop-shadow-sm">{(market as any).flag || "📍"}</span>
-                                <span className="text-[10px] text-fg font-bold tracking-wider uppercase whitespace-nowrap">
-                                    {market.name}
-                                </span>
-                            </div>
-                        </motion.div>
-                    ))}
-
+                    {/* Accurate 3D Globe */}
+                    <div className="w-full lg:w-2/3 order-1 lg:order-2 flex justify-center items-center">
+                        <Globe markers={exportMarkets as any} />
+                    </div>
                 </div>
 
                 {/* Footnote stats to reinforce the meaning of the map */}

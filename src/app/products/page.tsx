@@ -136,7 +136,7 @@ export default function ProductsPage() {
                 <div className="container mx-auto px-4 md:px-8 max-w-7xl relative z-10 space-y-32 md:space-y-48">
                     {products.map((cat, idx) => {
                         const isEven = idx % 2 === 0;
-                        const encodedMessage = encodeURIComponent(`Hello Tattvam Agri Export, I am interested in inquiring about your bulk export rates for ${cat.name}. Please share MRL specs and container pricing.`);
+                        const encodedMessage = encodeURIComponent(`Hello ${siteConfig.brandName}, I am interested in inquiring about your bulk export rates for ${cat.name}. Please share MRL specs and container pricing.`);
                         const whatsappLink = `https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodedMessage}`;
                         const imageSrc = localImages[cat.slug] || localImages["whole-spices"];
 
@@ -220,7 +220,7 @@ export default function ProductsPage() {
 
             <SEOTextBlock
                 title="Strict Compliance & Direct Origin Sourcing"
-                content="Our product catalog represents the absolute best of Indian agriculture. Every ounce of spice, seed, and millet shipped by Tattvam Agri Export is processed in a facility adhering to strict HACCP, ISO 22000, and KOSHER food safety frameworks. Our direct farming infrastructure across Mahesana and Unjha allows us to completely bypass traditional market yards, ensuring lower microbiological loads, superior essential oil preservation, and direct-factory pricing for our import partners globally."
+                content={`Our product catalog represents the absolute best of Indian agriculture. Every ounce of spice, seed, and millet shipped by ${siteConfig.brandName} is processed in a facility adhering to strict food safety frameworks. Our direct farming infrastructure allows us to completely bypass traditional market yards, ensuring lower microbiological loads, superior essential oil preservation, and direct-factory pricing for our import partners globally.`}
                 className="py-24 bg-surface border-t border-border"
             />
 

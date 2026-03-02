@@ -3,11 +3,11 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCTA } from "@/components/layout/StickyCTA";
+import { siteConfig } from "@/data/siteData";
 
 export const metadata: Metadata = {
-  title: "Tattvam Agri Export | Premium Indian Spices & Agro Commodities",
-  description:
-    "Tattvam Agri Export — FSSAI, HACCP, ISO & KOSHER certified Indian agri exporter from Visnagar, Gujarat. Bulk spices, oil seeds, millets & dehydrated products exported to 11+ countries.",
+  title: `${siteConfig.brandName} | Premium Indian Spices & Agro Commodities`,
+  description: siteConfig.description,
   keywords: [
     "Indian agri exporter",
     "spices export India",
@@ -21,8 +21,8 @@ export const metadata: Metadata = {
     "Gujarat agri export company",
   ],
   openGraph: {
-    title: "Tattvam Agri Export | Premium Indian Spices & Agro Commodities",
-    description: "FSSAI, HACCP, ISO & KOSHER certified Indian agri exporter from Visnagar, Gujarat.",
+    title: `${siteConfig.brandName} | Premium Indian Spices & Agro Commodities`,
+    description: siteConfig.description,
     type: "website",
   },
 };

@@ -25,11 +25,11 @@ export function Footer() {
                         <div className="lg:col-span-5 flex flex-col justify-between">
                             <div>
                                 <Link href="/" className="inline-block mb-8">
-                                    <h2 className="text-4xl lg:text-5xl font-black text-fg font-ibm tracking-tight mb-1">Tattvam.</h2>
-                                    <p className="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">Agri Export</p>
+                                    <h2 className="text-4xl lg:text-5xl font-black text-fg font-ibm tracking-tight mb-1">{siteConfig.brandName.split(" ")[0]}.</h2>
+                                    <p className="text-[10px] font-bold tracking-[0.3em] text-primary uppercase">{siteConfig.brandName.split(" ").slice(1).join(" ")}</p>
                                 </Link>
                                 <p className="text-muted text-base lg:text-lg max-w-sm leading-relaxed mb-10">
-                                    Premium agricultural exports sourced directly from the heritage soils of Mahesana, Gujarat. Cultivated with care, processed with precision, and delivered securely across borders.
+                                    {siteConfig.description}
                                 </p>
                             </div>
 
@@ -95,9 +95,8 @@ export function Footer() {
                                     <div className="flex items-start gap-3">
                                         <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                                         <address className="not-italic leading-relaxed">
-                                            GIDC Industrial Area<br />
-                                            Mahesana, Near Unjha<br />
-                                            Gujarat 384315, India
+                                            {siteConfig.location.address.split(', ').slice(0, 2).join(', ')}<br />
+                                            {siteConfig.location.address.split(', ').slice(2).join(', ')}
                                         </address>
                                     </div>
                                     <div className="flex items-center gap-3">

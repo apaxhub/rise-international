@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/sections/ContactForm";
 
+import { siteConfig } from "@/data/siteData";
+
 export const metadata: Metadata = {
-    title: "Contact Us | Get a Quote | Tattvam Agri Export",
-    description:
-        "Contact Tattvam Agri Export for bulk spice inquiries, export pricing, private label options, and documentation support. We export from Visnagar, Gujarat to 11+ countries.",
+    title: `Contact Us | Get a Quote | ${siteConfig.brandName}`,
+    description: siteConfig.description,
 };
 
 export default function ContactPage() {
